@@ -1,0 +1,16 @@
+{
+  "_comment": "Copy this file to config.json and fill in your own keys. config.json is gitignored so your keys never get committed.",
+
+  "api_sports_key": "PASTE_YOUR_API_SPORTS_KEY_HERE",
+  "openai_key": "PASTE_YOUR_OPENAI_KEY_HERE",
+
+  "base_url": "https://v3.football.api-sports.io",
+
+  "league": 15,
+  "season": 2025,
+  "date": "2025-06-18",
+
+  "use_cache": true,
+  "openai_model": "gpt-4o-mini",
+  "max_summary_runs": 3
+}
