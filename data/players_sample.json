@@ -1,0 +1,62 @@
+{
+  "get": "fixtures/players",
+  "parameters": { "fixture": "1339812" },
+  "errors": [],
+  "results": 2,
+  "response": [
+    {
+      "team": { "id": 85, "name": "Paris Saint Germain", "logo": "https://media.api-sports.io/football/teams/85.png" },
+      "players": [
+        {
+          "player": { "id": 617, "name": "O. Dembele", "photo": "https://media.api-sports.io/football/players/617.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 78, "position": "F", "rating": "8.4", "captain": false },
+              "goals": { "total": 2, "assists": 1, "conceded": 0, "saves": null },
+              "shots": { "total": 5, "on": 3 },
+              "cards": { "yellow": 0, "red": 0 }
+            }
+          ]
+        },
+        {
+          "player": { "id": 1485, "name": "Vitinha", "photo": "https://media.api-sports.io/football/players/1485.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 90, "position": "M", "rating": "7.9", "captain": false },
+              "goals": { "total": 1, "assists": 1, "conceded": 0, "saves": null },
+              "shots": { "total": 3, "on": 2 },
+              "cards": { "yellow": 1, "red": 0 }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team": { "id": 128, "name": "Atletico Madrid", "logo": "https://media.api-sports.io/football/teams/128.png" },
+      "players": [
+        {
+          "player": { "id": 909, "name": "J. Oblak", "photo": "https://media.api-sports.io/football/players/909.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 90, "position": "G", "rating": "6.1", "captain": true },
+              "goals": { "total": 0, "assists": 0, "conceded": 4, "saves": 3 },
+              "shots": { "total": 0, "on": 0 },
+              "cards": { "yellow": 0, "red": 0 }
+            }
+          ]
+        },
+        {
+          "player": { "id": 2296, "name": "J. Gimenez", "photo": "https://media.api-sports.io/football/players/2296.png" },
+          "statistics": [
+            {
+              "games": { "minutes": 65, "position": "D", "rating": "5.4", "captain": false },
+              "goals": { "total": 0, "assists": 0, "conceded": 0, "saves": null },
+              "shots": { "total": 0, "on": 0 },
+              "cards": { "yellow": 1, "red": 1 }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

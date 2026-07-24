@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FARS Workshop — Match Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="topbar">
+    <span class="mark">›_</span>
+    <h1>Match Dashboard</h1>
+    <span class="tag">FARS Workshop</span>
+  </header>
+
+  <main class="wrap">
+    <p class="lede">Live fixtures pulled from api-sports</p>
+
+    <div class="grid">
+      <!-- ---- FILL IN #10 -----------------------------------------------
+           Loop over `games` and print one card per match. Jinja loop syntax:
+             {% for g in games %} ... {% endfor %}
+           Inside the card, print g.home, g.away, g.home_goals, g.away_goals,
+           g.status and g.venue.
+      -->
+      {% for ____ in ____ %}
+      <article class="card">
+        <div class="score">
+          <span class="team">{{ g.home }}</span>
+          <span class="nums">{{ g.home_goals }} &ndash; {{ g.away_goals }}</span>
+          <span class="team">{{ g.away }}</span>
+        </div>
+        <div class="meta">
+          <span class="status">{{ g.status }}</span>
+          <span class="venue">{{ g.venue }}</span>
+        </div>
+      </article>
+      {% endfor %}
+      <!-- ---------------------------------------------------------------- -->
+    </div>
+  </main>
+</body>
+</html>

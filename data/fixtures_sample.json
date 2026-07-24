@@ -1,0 +1,65 @@
+{
+  "get": "fixtures",
+  "parameters": { "league": "15", "season": "2025", "date": "2025-06-18" },
+  "errors": [],
+  "results": 3,
+  "response": [
+    {
+      "fixture": {
+        "id": 1339812,
+        "date": "2025-06-18T18:00:00+00:00",
+        "status": { "long": "Match Finished", "short": "FT", "elapsed": 90 },
+        "venue": { "id": 210, "name": "MetLife Stadium", "city": "East Rutherford" },
+        "referee": "C. Ramos"
+      },
+      "league": { "id": 15, "name": "FIFA Club World Cup", "country": "World", "season": 2025, "round": "Group Stage - 1" },
+      "teams": {
+        "home": { "id": 85, "name": "Paris Saint Germain", "logo": "https://media.api-sports.io/football/teams/85.png", "winner": true },
+        "away": { "id": 128, "name": "Atletico Madrid", "logo": "https://media.api-sports.io/football/teams/128.png", "winner": false }
+      },
+      "goals": { "home": 4, "away": 0 },
+      "score": {
+        "halftime": { "home": 2, "away": 0 },
+        "fulltime": { "home": 4, "away": 0 }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1339813,
+        "date": "2025-06-18T21:00:00+00:00",
+        "status": { "long": "Match Finished", "short": "FT", "elapsed": 90 },
+        "venue": { "id": 1602, "name": "Rose Bowl Stadium", "city": "Pasadena" },
+        "referee": "S. Marciniak"
+      },
+      "league": { "id": 15, "name": "FIFA Club World Cup", "country": "World", "season": 2025, "round": "Group Stage - 1" },
+      "teams": {
+        "home": { "id": 505, "name": "Inter", "logo": "https://media.api-sports.io/football/teams/505.png", "winner": false },
+        "away": { "id": 2506, "name": "Monterrey", "logo": "https://media.api-sports.io/football/teams/2506.png", "winner": false }
+      },
+      "goals": { "home": 1, "away": 1 },
+      "score": {
+        "halftime": { "home": 1, "away": 1 },
+        "fulltime": { "home": 1, "away": 1 }
+      }
+    },
+    {
+      "fixture": {
+        "id": 1339814,
+        "date": "2025-06-19T00:00:00+00:00",
+        "status": { "long": "Match Finished", "short": "FT", "elapsed": 90 },
+        "venue": { "id": null, "name": null, "city": null },
+        "referee": null
+      },
+      "league": { "id": 15, "name": "FIFA Club World Cup", "country": "World", "season": 2025, "round": "Group Stage - 1" },
+      "teams": {
+        "home": { "id": 131, "name": "Boca Juniors", "logo": "https://media.api-sports.io/football/teams/131.png", "winner": null },
+        "away": { "id": 127, "name": "Benfica", "logo": "https://media.api-sports.io/football/teams/127.png", "winner": null }
+      },
+      "goals": { "home": 2, "away": 2 },
+      "score": {
+        "halftime": { "home": null, "away": null },
+        "fulltime": { "home": 2, "away": 2 }
+      }
+    }
+  ]
+}
