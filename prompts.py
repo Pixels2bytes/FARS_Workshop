@@ -8,6 +8,7 @@ Two prompts, same data.
   BASELINE_PROMPT  is what a beginner writes: vague, no guardrails.
   MATCH_REPORT_PROMPT  is closer to what FARS actually uses: a role, a voice,
   football-newsroom-journalist conventions, **AND** explicit anti-hallucination rules.
+  YOUR_OWN_PROMPT  is where you can experiment with your own prompt-writing skills.
 
 The one rule that matters most for journalism is the last line of the good
 prompt: use ONLY the data provided. That single instruction is what keeps the
@@ -28,12 +29,24 @@ Voice and conventions:
 - Lead with the result and the story of the match, not the date.
 - Use standard football language: "netted", "the equaliser", "clean sheet",
   "brace" (two goals), "sent off" (red card), "the spot" (penalty).
-- Neutral and factual. No hype, no predictions, no opinion on quality.
+- Be factual. No predictions, no opinion on quality.
 - Refer to teams by name; do not invent nicknames.
+- Refer to players on first mention by full name, then by first initial and surname only.
+- Note box scores, minute of goals, and cards. Do not invent scorers or cards.
+- Mention the venue and referee if provided, but do not invent them.
+- Highlight star players and key moments, but do not invent them.
 
 HARD RULE — this is a newsroom, accuracy is everything:
-- Use ONLY the facts provided below. If a detail (attendance, venue, scorers,
+- Use ONLY the facts provided below. If a detail (attendance, venue, scorers, referee,
   cards) is not in the data, DO NOT mention it and DO NOT guess.
+
+MATCH DATA:
+{facts}
+"""
+
+
+YOUR_OWN_PROMPT = """ENTER YOUR OWN PROMPT HERE
+
 
 MATCH DATA:
 {facts}

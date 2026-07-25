@@ -4,10 +4,11 @@ generate_summary.py
 LAB 4 - GENERATE (uses YOUR OpenAI key).
 
 This calls OpenAI with one fixture's facts and prints an AI match summary.
-It is capped at max_summary_runs (default 3) so nobody burns through credits.
+It is capped at max_summary_runs (default 5).
 
   python generate_summary.py            # summarise the first fixture, good prompt
   python generate_summary.py --baseline # same fixture, the weak prompt (compare!)
+  python generate_summary.py --new # same fixture, the weak prompt (compare!)
   python generate_summary.py --sparse   # the data-poor fixture (watch it hallucinate)
 
 There is ONE blank (#8): the model call itself.
@@ -20,7 +21,7 @@ from openai import OpenAI
 
 from workshop_utils import load_config, BASE_DIR
 from fetch_fixtures import get_fixtures
-from prompts import BASELINE_PROMPT, MATCH_REPORT_PROMPT, build_facts_block
+from prompts import BASELINE_PROMPT, MATCH_REPORT_PROMPT, YOUR_OWN_PROMPT, build_facts_block
 
 RUN_COUNTER = BASE_DIR / "data" / ".summary_runs"
 
@@ -53,11 +54,11 @@ def generate(facts, prompt_template, config):
     return response.choices[0].message.content.strip()
 
 
-def process(use_baseline=False, use_sparse=False):
+def process(use_baseline=False, use_sparse=False, use_new=False):
     config = load_config()
 
-    if runs_used() >= config.get("max_summary_runs", 3):
-        print(f"Run limit reached ({config.get('max_summary_runs', 3)}). "
+    if runs_used() >= config.get("max_summary_runs", 5):
+        print(f"Run limit reached ({config.get('max_summary_runs', 5)}). "
               f"Delete data/.summary_runs to reset for the demo.")
         return
 
@@ -66,22 +67,24 @@ def process(use_baseline=False, use_sparse=False):
     game = games[-1] if use_sparse else games[0]
 
     facts = build_facts_block(game)
-    template = BASELINE_PROMPT if use_baseline else MATCH_REPORT_PROMPT
+    template = BASELINE_PROMPT if use_baseline else MATCH_REPORT_PROMPT if use_new else YOUR_OWN_PROMPT
 
     print("=" * 60)
     print(f"FIXTURE: {game['home']} vs {game['away']}")
-    print(f"PROMPT:  {'BASELINE (weak)' if use_baseline else 'MATCH REPORT (good)'}")
+    prompt_label = 'NEW REPORT (your own)' if use_new else 'BASELINE (weak)' if use_baseline else 'MATCH REPORT (good)'
+    print(f"PROMPT:  {prompt_label}")
     print("-" * 60)
     print(generate(facts, template, config))
     print("=" * 60)
 
     record_run()
-    print(f"(runs used: {runs_used()}/{config.get('max_summary_runs', 3)})")
+    print(f"(runs used: {runs_used()}/{config.get('max_summary_runs', 5)})")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--baseline", action="store_true", help="use the weak prompt")
     parser.add_argument("--sparse", action="store_true", help="use the data-poor fixture")
+    parser.add_argument("--new", action="store_true", help="use the new prompt you wrote in prompts.py")
     args = parser.parse_args()
-    process(use_baseline=args.baseline, use_sparse=args.sparse)
+    process(use_baseline=args.baseline, use_sparse=args.sparse, use_new=args.new)
