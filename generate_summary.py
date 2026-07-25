@@ -15,6 +15,7 @@ There is ONE blank (#8): the model call itself.
 """
 
 import argparse
+import json
 from pathlib import Path
 
 from openai import OpenAI
@@ -24,6 +25,8 @@ from fetch_fixtures import get_fixtures
 from prompts import BASELINE_PROMPT, MATCH_REPORT_PROMPT, YOUR_OWN_PROMPT, build_facts_block
 
 RUN_COUNTER = BASE_DIR / "data" / ".summary_runs"
+SUMMARY_DIR = BASE_DIR / "data" / "summaries"
+SUMMARY_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def runs_used():
@@ -34,6 +37,47 @@ def runs_used():
 
 def record_run():
     RUN_COUNTER.write_text(str(runs_used() + 1))
+
+
+def summary_file_path(game_id):
+    return SUMMARY_DIR / f"game_{game_id}_summaries.json"
+
+
+def load_summary_record(game_id):
+    path = summary_file_path(game_id)
+    if path.exists():
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    return None
+
+
+def save_summary_record(game, summary_type, summary_text):
+    path = summary_file_path(game["id"])
+    record = load_summary_record(game["id"]) or {
+        "id": game["id"],
+        "home": game["home"],
+        "away": game["away"],
+        "home_goals": game["home_goals"],
+        "away_goals": game["away_goals"],
+        "status": game["status"],
+        "venue": game["venue"],
+        "summaries": {
+            "baseline": None,
+            "match_report": None,
+            "your_own": None,
+        },
+    }
+    record.update({
+        "home": game["home"],
+        "away": game["away"],
+        "home_goals": game["home_goals"],
+        "away_goals": game["away_goals"],
+        "status": game["status"],
+        "venue": game["venue"],
+    })
+    record["summaries"][summary_type] = summary_text
+    with path.open("w", encoding="utf-8") as f:
+        json.dump(record, f, indent=2, ensure_ascii=False)
 
 
 def generate(facts, prompt_template, config):
@@ -67,16 +111,19 @@ def process(use_baseline=False, use_sparse=False, use_new=False):
     game = games[-1] if use_sparse else games[0]
 
     facts = build_facts_block(game)
-    template = BASELINE_PROMPT if use_baseline else MATCH_REPORT_PROMPT if use_new else YOUR_OWN_PROMPT
+    summary_type = "baseline" if use_baseline else "your_own" if use_new else "match_report"
+    template = BASELINE_PROMPT if use_baseline else YOUR_OWN_PROMPT if use_new else MATCH_REPORT_PROMPT
 
     print("=" * 60)
     print(f"FIXTURE: {game['home']} vs {game['away']}")
     prompt_label = 'NEW REPORT (your own)' if use_new else 'BASELINE (weak)' if use_baseline else 'MATCH REPORT (good)'
     print(f"PROMPT:  {prompt_label}")
     print("-" * 60)
-    print(generate(facts, template, config))
+    summary_text = generate(facts, template, config)
+    print(summary_text)
     print("=" * 60)
 
+    save_summary_record(game, summary_type, summary_text)
     record_run()
     print(f"(runs used: {runs_used()}/{config.get('max_summary_runs', 5)})")
 

@@ -14,6 +14,7 @@ Run it on its own to test:   python fetch_fixtures.py
 """
 
 import requests
+from datetime import datetime, timedelta, timezone
 
 from workshop_utils import load_config, load_cache
 
@@ -67,6 +68,13 @@ def normalize_fixtures(raw):
     matches = raw[____]
     # --------------------------------------------------------------------
 
+    def to_est_label(iso_datetime):
+        dt = datetime.fromisoformat(iso_datetime)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        est = dt.astimezone(timezone(timedelta(hours=-5)))
+        return est.strftime("%m-%d-%y %I:%M %p EST")
+
     games = []
     for m in matches:
         # ---- FILL IN #5 ------------------------------------------------
@@ -82,6 +90,7 @@ def normalize_fixtures(raw):
             "away_goals": m["goals"][____],
             "status": m["fixture"]["status"]["long"],
             "venue": (m["fixture"]["venue"]["name"] or "Venue TBD"),
+            "date_time_est": to_est_label(m["fixture"]["date"]),
         }
         # ----------------------------------------------------------------
         games.append(game)

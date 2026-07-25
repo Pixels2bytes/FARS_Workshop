@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FARS Workshop — Match Dashboard</title>
+  <title>FARS Workshop — Sports Dashboard</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
   <header class="topbar">
     <span class="mark">›_</span>
-    <h1>Match Dashboard</h1>
+    <h1>Sports Dashboard</h1>
     <span class="tag">FARS Workshop</span>
   </header>
 
@@ -24,7 +24,7 @@
            g.status and g.venue.
       -->
       {% for ____ in ____ %}
-      <article class="card">
+      <article class="card" data-game-id="{{ g.id }}">
         <div class="score">
           <span class="team">{{ g.home }}</span>
           <span class="nums">{{ g.home_goals }} &ndash; {{ g.away_goals }}</span>
@@ -33,11 +33,84 @@
         <div class="meta">
           <span class="status">{{ g.status }}</span>
           <span class="venue">{{ g.venue }}</span>
+          <span class="datetime">{{ g.date_time_est }}</span>
         </div>
       </article>
       {% endfor %}
       <!-- ---------------------------------------------------------------- -->
     </div>
+
+    <section class="details" id="game-details">
+      <h2>Game details</h2>
+      <div class="detail-card">
+        <p><strong>Home:</strong> <span id="detail-home">Select a game</span></p>
+        <p><strong>Away:</strong> <span id="detail-away"></span></p>
+        <p><strong>Score:</strong> <span id="detail-score"></span></p>
+        <p><strong>Status:</strong> <span id="detail-status"></span></p>
+        <p><strong>Venue:</strong> <span id="detail-venue"></span></p>
+        <p><strong>Date & Time:</strong> <span id="detail-datetime"></span></p>
+      </div>
+
+      <div class="tabs">
+        <button type="button" class="tab-button active" data-summary="baseline">Weak</button>
+        <button type="button" class="tab-button" data-summary="match_report">Good</button>
+        <button type="button" class="tab-button" data-summary="your_own">Your own</button>
+      </div>
+
+      <div class="summary-content" id="summary-content">
+        Summary unavailable yet.
+      </div>
+    </section>
+
+    <script>
+      const games = {{ games|tojson }};
+      const summaryCache = {};
+
+      function findGame(id) {
+        return games.find(game => String(game.id) === String(id));
+      }
+
+      function renderGameDetails(game) {
+        document.getElementById('detail-home').textContent = game.home;
+        document.getElementById('detail-away').textContent = game.away;
+        document.getElementById('detail-score').textContent = `${game.home_goals} – ${game.away_goals}`;
+        document.getElementById('detail-status').textContent = game.status;
+        document.getElementById('detail-venue').textContent = game.venue;
+        document.getElementById('detail-datetime').textContent = game.date_time_est || 'Unknown';
+      }
+
+      function renderSummary(summaryType) {
+        const details = summaryCache.currentGame;
+        if (!details) {
+          document.getElementById('summary-content').textContent = 'Select a game first.';
+          return;
+        }
+        const summary = details.summaries && details.summaries[summaryType];
+        document.getElementById('summary-content').textContent = summary || 'Summary unavailable yet.';
+      }
+
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+          const gameId = card.dataset.gameId;
+          const game = findGame(gameId);
+          if (!game) return;
+
+          summaryCache.currentGame = game;
+          renderGameDetails(game);
+          document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+          document.querySelector('[data-summary="baseline"]').classList.add('active');
+          renderSummary('baseline');
+        });
+      });
+
+      document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          renderSummary(button.dataset.summary);
+        });
+      });
+    </script>
   </main>
 </body>
 </html>
