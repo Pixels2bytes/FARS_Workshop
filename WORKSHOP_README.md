@@ -118,6 +118,11 @@ python generate_summary.py --baseline
 Same match, a vague prompt. Open `prompts.py` and see *why* the good one is better: a **role**, a **voice**, football **conventions and lingo**, and the hard rule section:
 *use only the data provided*.
 
+### Run 3 — Your Own Prompt
+```bash
+python generate_summary.py --new
+```
+Same match, your own created prompt. Open `prompts.py` and write a better prompt than the good version in the ``
 
 ### Run 3 — The Hallucination Trap
 ```bash
@@ -175,7 +180,6 @@ headers = {"x-apisports-key": config["api_sports_key"]}
 params = {
     "league": config["league"],
     "season": config["season"],
-    "date": config["date"],
 }
 
 # #4

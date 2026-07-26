@@ -1,58 +1,340 @@
 {
   "get": "fixtures/players",
-  "parameters": { "fixture": "1339812" },
+  "parameters": {
+    "fixture": "1141650"
+  },
   "errors": [],
   "results": 2,
+  "paging": {
+    "current": 1,
+    "total": 1
+  },
   "response": [
     {
-      "team": { "id": 85, "name": "Paris Saint Germain", "logo": "https://media.api-sports.io/football/teams/85.png" },
+      "team": {
+        "id": 2289,
+        "name": "Leon",
+        "logo": "https://media.api-sports.io/football/teams/2289.png",
+        "update": "2023-12-24T04:02:14+00:00"
+      },
       "players": [
         {
-          "player": { "id": 617, "name": "O. Dembele", "photo": "https://media.api-sports.io/football/players/617.png" },
+          "player": {
+            "id": 35473,
+            "name": "Rodolfo Cota",
+            "photo": "https://media.api-sports.io/football/players/35473.png"
+          },
           "statistics": [
             {
-              "games": { "minutes": 78, "position": "F", "rating": "8.4", "captain": false },
-              "goals": { "total": 2, "assists": 1, "conceded": 0, "saves": null },
-              "shots": { "total": 5, "on": 3 },
-              "cards": { "yellow": 0, "red": 0 }
+              "games": {
+                "minutes": 90,
+                "number": 30,
+                "position": "G",
+                "rating": "7.3",
+                "captain": false,
+                "substitute": false
+              },
+              "offsides": null,
+              "shots": {
+                "total": null,
+                "on": null
+              },
+              "goals": {
+                "total": null,
+                "conceded": 1,
+                "assists": null,
+                "saves": 4
+              },
+              "passes": {
+                "total": 18,
+                "key": null,
+                "accuracy": "15"
+              },
+              "tackles": {
+                "total": null,
+                "blocks": null,
+                "interceptions": null
+              },
+              "duels": {
+                "total": null,
+                "won": null
+              },
+              "dribbles": {
+                "attempts": null,
+                "success": null,
+                "past": null
+              },
+              "fouls": {
+                "drawn": null,
+                "committed": null
+              },
+              "cards": {
+                "yellow": 0,
+                "red": 0
+              },
+              "penalty": {
+                "won": null,
+                "commited": null,
+                "scored": 0,
+                "missed": 0,
+                "saved": 0
+              }
             }
           ]
         },
         {
-          "player": { "id": 1485, "name": "Vitinha", "photo": "https://media.api-sports.io/football/players/1485.png" },
+          "player": {
+            "id": 35595,
+            "name": "Iv\u00e1n Moreno",
+            "photo": "https://media.api-sports.io/football/players/35595.png"
+          },
           "statistics": [
             {
-              "games": { "minutes": 90, "position": "M", "rating": "7.9", "captain": false },
-              "goals": { "total": 1, "assists": 1, "conceded": 0, "saves": null },
-              "shots": { "total": 3, "on": 2 },
-              "cards": { "yellow": 1, "red": 0 }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "team": { "id": 128, "name": "Atletico Madrid", "logo": "https://media.api-sports.io/football/teams/128.png" },
-      "players": [
-        {
-          "player": { "id": 909, "name": "J. Oblak", "photo": "https://media.api-sports.io/football/players/909.png" },
-          "statistics": [
-            {
-              "games": { "minutes": 90, "position": "G", "rating": "6.1", "captain": true },
-              "goals": { "total": 0, "assists": 0, "conceded": 4, "saves": 3 },
-              "shots": { "total": 0, "on": 0 },
-              "cards": { "yellow": 0, "red": 0 }
+              "games": {
+                "minutes": 87,
+                "number": 7,
+                "position": "D",
+                "rating": "6.2",
+                "captain": false,
+                "substitute": false
+              },
+              "offsides": null,
+              "shots": {
+                "total": null,
+                "on": null
+              },
+              "goals": {
+                "total": null,
+                "conceded": 0,
+                "assists": null,
+                "saves": null
+              },
+              "passes": {
+                "total": 27,
+                "key": null,
+                "accuracy": "22"
+              },
+              "tackles": {
+                "total": null,
+                "blocks": null,
+                "interceptions": null
+              },
+              "duels": {
+                "total": 10,
+                "won": 3
+              },
+              "dribbles": {
+                "attempts": 2,
+                "success": 2,
+                "past": 2
+              },
+              "fouls": {
+                "drawn": null,
+                "committed": 2
+              },
+              "cards": {
+                "yellow": 0,
+                "red": 0
+              },
+              "penalty": {
+                "won": null,
+                "commited": null,
+                "scored": 0,
+                "missed": 0,
+                "saved": null
+              }
             }
           ]
         },
         {
-          "player": { "id": 2296, "name": "J. Gimenez", "photo": "https://media.api-sports.io/football/players/2296.png" },
+          "player": {
+            "id": 35654,
+            "name": "Jaine Barreiro",
+            "photo": "https://media.api-sports.io/football/players/35654.png"
+          },
           "statistics": [
             {
-              "games": { "minutes": 65, "position": "D", "rating": "5.4", "captain": false },
-              "goals": { "total": 0, "assists": 0, "conceded": 0, "saves": null },
-              "shots": { "total": 0, "on": 0 },
-              "cards": { "yellow": 1, "red": 1 }
+              "games": {
+                "minutes": 90,
+                "number": 21,
+                "position": "D",
+                "rating": "6.7",
+                "captain": false,
+                "substitute": false
+              },
+              "offsides": 1,
+              "shots": {
+                "total": null,
+                "on": null
+              },
+              "goals": {
+                "total": null,
+                "conceded": 0,
+                "assists": null,
+                "saves": null
+              },
+              "passes": {
+                "total": 58,
+                "key": 1,
+                "accuracy": "43"
+              },
+              "tackles": {
+                "total": null,
+                "blocks": 1,
+                "interceptions": null
+              },
+              "duels": {
+                "total": 5,
+                "won": 3
+              },
+              "dribbles": {
+                "attempts": null,
+                "success": null,
+                "past": 1
+              },
+              "fouls": {
+                "drawn": 1,
+                "committed": 2
+              },
+              "cards": {
+                "yellow": 0,
+                "red": 0
+              },
+              "penalty": {
+                "won": null,
+                "commited": null,
+                "scored": 0,
+                "missed": 0,
+                "saved": null
+              }
+            }
+          ]
+        },
+        {
+          "player": {
+            "id": 5872,
+            "name": "Adonis Fr\u00edas",
+            "photo": "https://media.api-sports.io/football/players/5872.png"
+          },
+          "statistics": [
+            {
+              "games": {
+                "minutes": 90,
+                "number": 22,
+                "position": "D",
+                "rating": "6.6",
+                "captain": false,
+                "substitute": false
+              },
+              "offsides": null,
+              "shots": {
+                "total": null,
+                "on": null
+              },
+              "goals": {
+                "total": null,
+                "conceded": 0,
+                "assists": null,
+                "saves": null
+              },
+              "passes": {
+                "total": 57,
+                "key": null,
+                "accuracy": "51"
+              },
+              "tackles": {
+                "total": 2,
+                "blocks": null,
+                "interceptions": 1
+              },
+              "duels": {
+                "total": 7,
+                "won": 4
+              },
+              "dribbles": {
+                "attempts": null,
+                "success": null,
+                "past": 1
+              },
+              "fouls": {
+                "drawn": null,
+                "committed": 1
+              },
+              "cards": {
+                "yellow": 0,
+                "red": 0
+              },
+              "penalty": {
+                "won": null,
+                "commited": null,
+                "scored": 0,
+                "missed": 0,
+                "saved": null
+              }
+            }
+          ]
+        },
+        {
+          "player": {
+            "id": 2487,
+            "name": "William Tesillo",
+            "photo": "https://media.api-sports.io/football/players/2487.png"
+          },
+          "statistics": [
+            {
+              "games": {
+                "minutes": 84,
+                "number": 6,
+                "position": "D",
+                "rating": "6",
+                "captain": true,
+                "substitute": false
+              },
+              "offsides": null,
+              "shots": {
+                "total": null,
+                "on": null
+              },
+              "goals": {
+                "total": null,
+                "conceded": 0,
+                "assists": null,
+                "saves": null
+              },
+              "passes": {
+                "total": 69,
+                "key": 1,
+                "accuracy": "49"
+              },
+              "tackles": {
+                "total": null,
+                "blocks": null,
+                "interceptions": 1
+              },
+              "duels": {
+                "total": 5,
+                "won": 2
+              },
+              "dribbles": {
+                "attempts": 1,
+                "success": 1,
+                "past": 1
+              },
+              "fouls": {
+                "drawn": 1,
+                "committed": 2
+              },
+              "cards": {
+                "yellow": 2,
+                "red": 1
+              },
+              "penalty": {
+                "won": null,
+                "commited": null,
+                "scored": 0,
+                "missed": 0,
+                "saved": null
+              }
             }
           ]
         }

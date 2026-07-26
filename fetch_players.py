@@ -14,8 +14,12 @@ Run it on its own to test:   python fetch_players.py
 """
 
 import requests
+import json
 
-from workshop_utils import load_config, load_cache
+from workshop_utils import load_config, load_cache, BASE_DIR
+
+PLAYERS_DIR = BASE_DIR / "data" / "players"
+PLAYERS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def fetch_raw_players(config, fixture_id):
@@ -29,6 +33,12 @@ def fetch_raw_players(config, fixture_id):
 
     response = requests.get(url, headers=headers, params=params, timeout=15)
     response.raise_for_status()
+    
+    # Save players data to JSON file
+    players_json_path = PLAYERS_DIR / f"players_{fixture_id}.json"
+    with open(players_json_path, "w", encoding="utf-8") as f:
+        json.dump(response.json(), f, indent=2)
+
     return response.json()
 
 
@@ -69,7 +79,7 @@ def get_players(fixture_id):
 
 
 if __name__ == "__main__":
-    for p in get_players(1339812):
+    for p in get_players(1141650):
         line = f"{p['name']} ({p['team']}) — {p['minutes']}' rating {p['rating']}"
         if p["goals"]:
             line += f", {p['goals']} goal(s)"
