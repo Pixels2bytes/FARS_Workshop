@@ -8,7 +8,7 @@
 </head>
 <body>
   <header class="topbar">
-    <span class="mark">›_</span>
+    <span class="mark">🤩</span>
     <h1>Sports Dashboard</h1>
     <span class="tag">FARS Workshop</span>
   </header>
@@ -23,7 +23,7 @@
            Inside the card, print g.home, g.away, g.home_goals, g.away_goals,
            g.status and g.venue.
       -->
-      {% for ____ in ____ %}
+      {% for g in games %}
       <article class="card" data-game-id="{{ g.id }}">
         <div class="score">
           <span class="team">{{ g.home }}</span>

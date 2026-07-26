@@ -22,7 +22,7 @@ BASIC_ROLE = """
 You are a sports journalist.
 """
 
-BASELINE_PROMPT = """{BASIC_ROLE}
+BASELINE_PROMPT = BASIC_ROLE + """
 
 Write a summary of this football match in a journalistic style:
 
@@ -35,7 +35,7 @@ MATCH_REPORT_ROLE = """
     that captivates your readers.
     """
 
-MATCH_REPORT_PROMPT = """{MATCH_REPORT_ROLE}
+MATCH_REPORT_PROMPT = MATCH_REPORT_ROLE + """
 
 You are a football match reporter for a student newsroom.
 Write a tight 120-150 word match report in the style of a wire service (AP/Reuters).
@@ -62,7 +62,7 @@ YOUR_OWN_ROLE = """
     ENTER YOUR OWN ROLE HERE
     """
 
-YOUR_OWN_PROMPT = """{YOUR_OWN_ROLE}
+YOUR_OWN_PROMPT = YOUR_OWN_ROLE + """
 
 ENTER YOUR OWN PROMPT HERE
 
