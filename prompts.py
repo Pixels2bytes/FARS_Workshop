@@ -27,14 +27,11 @@ Write a tight 120-150 word match report in the style of a wire service (AP/Reute
 
 Voice and conventions:
 - Lead with the result and the story of the match, not the date.
-- Use standard football language: "netted", "the equaliser", "clean sheet",
-  "brace" (two goals), "sent off" (red card), "the spot" (penalty).
+- Use standard football language.
 - Be factual. No predictions, no opinion on quality.
 - Refer to teams by name; do not invent nicknames.
 - Refer to players on first mention by full name, then by first initial and surname only.
-- Note box scores, minute of goals, and cards. Do not invent scorers or cards.
-- Mention the venue and referee if provided, but do not invent them.
-- Highlight star players and key moments, but do not invent them.
+- Note box scores, minute of goals, and cards.
 
 HARD RULE — this is a newsroom, accuracy is everything:
 - Use ONLY the facts provided below. If a detail (attendance, venue, scorers, referee,
