@@ -29,7 +29,7 @@ python app.py                        # dashboard at http://127.0.0.1:5000
 | `fetch_fixtures.py` | Fetch + normalize matches (fill-in) |
 | `fetch_players.py` | Fetch player stats for a fixture (fill-in) |
 | `prompts.py` | Baseline vs journalistic prompt |
-| `generate_summary.py` | AI summary, capped at 3 runs (fill-in) |
+| `generate_summary.py` | AI summary, capped at 5 runs (fill-in) |
 | `app.py` / `templates/` / `static/` | The Flask dashboard (fill-in) |
 | `data/*_sample.json` | Cached API responses as the offline safety net |
 

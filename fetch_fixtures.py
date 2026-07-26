@@ -14,10 +14,13 @@ Run it on its own to test:   python fetch_fixtures.py
 """
 
 import requests
+import json
 from datetime import datetime, timedelta, timezone
 
-from workshop_utils import load_config, load_cache
+from workshop_utils import load_config, load_cache, BASE_DIR
 
+GAMES_DIR = BASE_DIR / "data" / "games"
+GAMES_DIR.mkdir(parents=True, exist_ok=True)
 
 def fetch_raw_fixtures(config):
     """
@@ -30,7 +33,7 @@ def fetch_raw_fixtures(config):
     # ---- FILL IN #1 ----------------------------------------------------
     # The endpoint. api-sports serves fixtures at  <base_url>/fixtures
     # Build the full URL from config["base_url"].
-    url = ____
+    url = f"____"
     # --------------------------------------------------------------------
 
     # ---- FILL IN #2 ----------------------------------------------------
@@ -45,12 +48,17 @@ def fetch_raw_fixtures(config):
     params = {
         "league": config[____],
         "season": config[____],
-        "date": config[____],
     }
     # --------------------------------------------------------------------
 
     response = requests.get(url, headers=headers, params=params, timeout=15)
     response.raise_for_status()
+    
+    # Save fixtures data to JSON file
+    fixtures_json_path = GAMES_DIR / f"fixtures_{config['league']}_{config['season']}.json"
+    with open(fixtures_json_path, "w", encoding="utf-8") as f:
+        json.dump(response.json(), f, indent=2)
+        
     return response.json()
 
 
