@@ -107,6 +107,10 @@ def process(use_baseline=False, use_sparse=False, use_new=False):
         return
 
     games = get_fixtures()
+    if not games:
+        print("No fixtures available to summarize. Check your cache or API settings.")
+        return
+
     # The sparse fixture (no venue/referee) is the last one in the sample.
     game = games[-1] if use_sparse else games[0]
 

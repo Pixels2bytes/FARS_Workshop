@@ -16,13 +16,28 @@ model from inventing attendance figures, cards. While not fool proof, it is the
 single most important guardrail for factual accuracy.
 """
 
-BASELINE_PROMPT = """Write a summary of this football match in a journalistic style:
+
+### BASIC ROLE
+BASIC_ROLE = """
+You are a sports journalist.
+"""
+
+BASELINE_PROMPT = """{BASIC_ROLE}
+
+Write a summary of this football match in a journalistic style:
 
 {facts}
 """
 
+### MATCH REPORT ROLE
+MATCH_REPORT_ROLE = """
+    Your task is to provide accurate information, insightful analysis, and compelling storytelling
+    that captivates your readers.
+    """
 
-MATCH_REPORT_PROMPT = """You are a football match reporter for a student newsroom.
+MATCH_REPORT_PROMPT = """{MATCH_REPORT_ROLE}
+
+You are a football match reporter for a student newsroom.
 Write a tight 120-150 word match report in the style of a wire service (AP/Reuters).
 
 Voice and conventions:
@@ -42,7 +57,14 @@ MATCH DATA:
 """
 
 
-YOUR_OWN_PROMPT = """ENTER YOUR OWN PROMPT HERE
+### YOUR OWN ROLE
+YOUR_OWN_ROLE = """
+    ENTER YOUR OWN ROLE HERE
+    """
+
+YOUR_OWN_PROMPT = """{YOUR_OWN_ROLE}
+
+ENTER YOUR OWN PROMPT HERE
 
 
 MATCH DATA:
@@ -53,7 +75,7 @@ MATCH DATA:
 def build_facts_block(game):
     """Turn one normalized fixture dict into a plain-text facts block."""
     return (
-        f"Competition: {game.get('league', 'FIFA Club World Cup 2025')}\n"
+        f"Competition: {game.get('league', 'FIFA Club World Cup 2024')}\n"
         f"Home: {game['home']} — {game['home_goals']}\n"
         f"Away: {game['away']} — {game['away_goals']}\n"
         f"Status: {game['status']}\n"
